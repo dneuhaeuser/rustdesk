@@ -158,6 +158,9 @@ jobs:
         shell: bash
 
       - name: Build rustdesk
+        env: |
+          RS_PUB_KEY: "${{ secrets.RS_PUB_KEY }}"
+          RENDEZVOUS_SERVER: "${{ secrets.RENDEZVOUS_SERVER }}"
         run: |
           Invoke-WebRequest -Uri https://github.com/rustdesk-org/rdev/releases/download/usbmmidd_v2/usbmmidd_v2.zip -OutFile usbmmidd_v2.zip
           Expand-Archive usbmmidd_v2.zip -DestinationPath .
