@@ -67,7 +67,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
   if (get_rustdesk_app_name) {
     wchar_t app_name_buffer[512] = {0};
     if (get_rustdesk_app_name(app_name_buffer, 512) == 0) {
-      app_name = std::wstring(app_name_buffer);
+      // app_name = std::wstring(app_name_buffer);
     }
   }
 
