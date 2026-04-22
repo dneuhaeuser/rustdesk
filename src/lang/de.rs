@@ -3,7 +3,7 @@ pub static ref T: std::collections::HashMap<&'static str, &'static str> =
     [
         ("Status", "Status"),
         ("Your Desktop", "Ihr Desktop"),
-        ("desk_tip", "Mit dieser ID und diesem Passwort kann der ARBOR-Support auf Ihren Desktop zugreifen."),
+        ("desk_tip", "Mit folgender ID und Passwort kann der ARBOR-Support auf Ihren Desktop zugreifen."),
         ("Password", "Passwort"),
         ("Ready", "Bereit"),
         ("Established", "Verbunden"),
