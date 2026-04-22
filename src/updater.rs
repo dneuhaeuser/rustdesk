@@ -83,8 +83,10 @@ fn start_auto_update_check() -> Sender<UpdateMsg> {
 
 fn start_auto_update_check_(rx_msg: Receiver<UpdateMsg>) {
     std::thread::sleep(Duration::from_secs(30));
-    if let Err(e) = check_update(false) {
-        log::error!("Error checking for updates: {}", e);
+    if config::Config::get_bool_option(config::keys::OPTION_ALLOW_AUTO_UPDATE) {
+        if let Err(e) = check_update(false) {
+            log::error!("Error checking for updates: {}", e);
+        }
     }
 
     const MIN_INTERVAL: Duration = Duration::from_secs(60 * 10);
