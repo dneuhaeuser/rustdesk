@@ -1282,7 +1282,7 @@ class _SafetyState extends State<_Safety> with AutomaticKeepAliveClientMixin {
     update(bool v) => setState(() {});
     RxBool applyEnabled = false.obs;
     return [
-      context, 'Enable direct IP access', kOptionDirectServer,
+      _OptionCheckBox(context, 'Enable direct IP access', kOptionDirectServer,
           update: update, enabled: !locked),
       () {
         // Simple temp wrapper for PR check
@@ -1440,7 +1440,7 @@ class _SafetyState extends State<_Safety> with AutomaticKeepAliveClientMixin {
     update(bool v) => setState(() {});
     RxBool applyEnabled = false.obs;
     return [
-      
+      _OptionCheckBox(
           context, 'auto_disconnect_option_tip', kOptionAllowAutoDisconnect,
           update: update, enabled: !locked),
       () {
@@ -2329,7 +2329,7 @@ class __PrinterState extends State<_Printer> {
             setState(() {});
           },
         ).marginOnly(left: 10),
-      
+      _OptionCheckBox(
         context,
         'auto-print-tip',
         kKeyPrinterAllowAutoPrint,
