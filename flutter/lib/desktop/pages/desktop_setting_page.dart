@@ -1235,7 +1235,7 @@ class _SafetyState extends State<_Safety> with AutomaticKeepAliveClientMixin {
     return _Card(title: 'Security', children: [
       shareRdp(context, enabled),
       _OptionCheckBox(context, 'Deny LAN discovery', 'enable-lan-discovery',
-          reverse: true, enabled: disabled),
+          reverse: true, enabled: !enabled),
       ...directIp(context),
       whitelist(),
       ...autoDisconnect(context),
@@ -1282,7 +1282,7 @@ class _SafetyState extends State<_Safety> with AutomaticKeepAliveClientMixin {
     update(bool v) => setState(() {});
     RxBool applyEnabled = false.obs;
     return [
-      _OptionCheckBox(context, 'Enable direct IP access', kOptionDirectServer,
+      context, 'Enable direct IP access', kOptionDirectServer,
           update: update, enabled: !locked),
       () {
         // Simple temp wrapper for PR check
@@ -1440,7 +1440,7 @@ class _SafetyState extends State<_Safety> with AutomaticKeepAliveClientMixin {
     update(bool v) => setState(() {});
     RxBool applyEnabled = false.obs;
     return [
-      _OptionCheckBox(
+      
           context, 'auto_disconnect_option_tip', kOptionAllowAutoDisconnect,
           update: update, enabled: !locked),
       () {
@@ -2329,7 +2329,7 @@ class __PrinterState extends State<_Printer> {
             setState(() {});
           },
         ).marginOnly(left: 10),
-      _OptionCheckBox(
+      
         context,
         'auto-print-tip',
         kKeyPrinterAllowAutoPrint,
