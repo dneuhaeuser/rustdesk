@@ -1235,7 +1235,7 @@ class _SafetyState extends State<_Safety> with AutomaticKeepAliveClientMixin {
     return _Card(title: 'Security', children: [
       shareRdp(context, enabled),
       _OptionCheckBox(context, 'Deny LAN discovery', 'enable-lan-discovery',
-          reverse: true, enabled: enabled),
+          reverse: true, enabled: disabled),
       ...directIp(context),
       whitelist(),
       ...autoDisconnect(context),
