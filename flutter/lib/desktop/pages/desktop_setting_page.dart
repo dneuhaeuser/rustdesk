@@ -534,7 +534,7 @@ class _GeneralState extends State<_General> {
             context,
             'Check for software update on startup',
             kOptionEnableCheckUpdate, 
-            fakevalue: Some(false),
+            fakeValue: Some(false),
             isServer: false,
           ),
         if (showAutoUpdate)
@@ -1065,7 +1065,7 @@ class _SafetyState extends State<_Safety> with AutomaticKeepAliveClientMixin {
                   enabled: enabled, fakeValue: fakeValue),
             _OptionCheckBox(context, 'Enable remote configuration modification',
                 kOptionAllowRemoteConfigModification,
-                enabled: enabled, fakeValue: fakeValue),
+                enabled: enabled, fakeValue: true),
           ],
         ),
       ]);
@@ -1236,7 +1236,7 @@ class _SafetyState extends State<_Safety> with AutomaticKeepAliveClientMixin {
     return _Card(title: 'Security', children: [
       shareRdp(context, enabled),
       _OptionCheckBox(context, 'Deny LAN discovery', 'enable-lan-discovery',
-          reverse: true, fakevalue: Some(true), enabled: enabled),
+          reverse: true, fakeValue: Some(true), enabled: enabled),
       ...directIp(context),
       whitelist(),
       ...autoDisconnect(context),
