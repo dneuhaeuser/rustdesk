@@ -33,6 +33,34 @@ pub fn core_main() -> Option<Vec<String>> {
         return None;
     }
     crate::load_custom_client();
+
+// Windows defaults
+#[cfg(windows)]
+{
+    use hbb_common::config::{keys, DEFAULT_LOCAL_SETTINGS, DEFAULT_SETTINGS};
+    {
+        let mut s = DEFAULT_SETTINGS.write().unwrap();
+        // "Allow remote configuration modification" → default ON
+        s.entry(keys::OPTION_ALLOW_REMOTE_CONFIG_MODIFICATION.to_string())
+            .or_insert("Y".to_string());
+        // "Remove wallpaper during incoming sessions" → default ON
+        s.entry(keys::OPTION_ALLOW_REMOVE_WALLPAPER.to_string())
+            .or_insert("Y".to_string());
+    }
+    {
+        let mut s = DEFAULT_LOCAL_SETTINGS.write().unwrap();
+        // "Check for software update on startup" → default OFF
+        s.entry(keys::OPTION_ENABLE_CHECK_UPDATE.to_string())
+            .or_insert("N".to_string());
+        // "Deny LAN discovery" → default ON (= LAN discovery disabled)
+        s.entry(keys::OPTION_ENABLE_LAN_DISCOVERY.to_string())
+            .or_insert("N".to_string());
+        // "Incoming print jobs" → default dismiss
+        s.entry(keys::OPTION_PRINTER_INCOMING_JOB_ACTION.to_string())
+            .or_insert("dismiss".to_string());
+    }
+}
+   
     #[cfg(windows)]
     if !crate::platform::windows::bootstrap() {
         // return None to terminate the process
