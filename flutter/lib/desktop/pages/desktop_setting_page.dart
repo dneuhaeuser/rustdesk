@@ -534,7 +534,6 @@ class _GeneralState extends State<_General> {
             context,
             'Check for software update on startup',
             kOptionEnableCheckUpdate, 
-            fakeValue: false,
             isServer: false,
           ),
         if (showAutoUpdate)
