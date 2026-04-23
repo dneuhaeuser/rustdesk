@@ -19,7 +19,7 @@ class PrinterOptions {
       kValuePrinterIncomingJobDefault,
       kValuePrinterIncomingJobSelected
     ].contains(action)) {
-      action = kValuePrinterIncomingJobDefault;
+      action = kValuePrinterIncomingJobDismiss;
     }
 
     final printerNames = getPrinterNames();
