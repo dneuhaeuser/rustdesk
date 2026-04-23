@@ -1571,10 +1571,13 @@ String translate(String name) {
 // sciter: Does not have the function, but it should be kept the same.
 bool option2bool(String option, String value) {
   bool res;
-  if (option.startsWith("enable-") && option != kOptionEnableCheckUpdate) {
-    res = value != "N";
-  } else if (option == kOptionEnableCheckUpdate) {
-    res = value == "Y";
+  if (option.startsWith("enable-") &&
+    option != kOptionEnableCheckUpdate &&
+    option != kOptionEnableLanDiscovery) {
+      res = value != "N";
+  } else if (option == kOptionEnableCheckUpdate ||
+             option == kOptionEnableLanDiscovery) {
+      res = value == "Y";
   } else if (option.startsWith("allow-") ||
       option == kOptionStopService ||
       option == kOptionDirectServer ||
@@ -1592,7 +1595,8 @@ String bool2option(String option, bool b) {
   if (option.startsWith('enable-') &&
       option != kOptionEnableUdpPunch &&
       option != kOptionEnableIpv6Punch &&
-      option != kOptionEnableCheckUpdate) {
+      option != kOptionEnableCheckUpdate &&
+      option != kOptionEnableLanDiscovery) {
     res = b ? defaultOptionYes : 'N';
   } else if (option.startsWith('allow-') ||
       option == kOptionStopService ||
